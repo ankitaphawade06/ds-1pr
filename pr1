@@ -1,0 +1,66 @@
+#include <stdio.h> 
+#define MAX 100 
+// Function to perform linear search 
+int linearSearch(int arr[], int size, int key) { 
+for (int i = 0; i < size; i++) { 
+if (arr[i] == key) 
+return 1; // found 
+} 
+return 0; // not found 
+} 
+int main() { 
+int rollNumbers[MAX]; 
+int count = 0; 
+int choice; 
+while (1) { 
+printf("\n--- Student Training Program Menu --
+\n"); 
+printf("1. Enter roll numbers of students\n"); 
+printf("2. Search for a student (Linear Search)\n"); 
+printf("3. Display all roll numbers\n"); 
+printf("4. Exit\n"); 
+printf("Enter your choice: "); 
+scanf("%d", &choice); 
+if (choice == 1) { 
+printf("Enter number of students: "); 
+scanf("%d", &count); 
+if (count > MAX) { 
+printf("Maximum limit exceeded! Try again.\n"); 
+count = 0; 
+continue; 
+} for (int i = 0; i < count; i++) { 
+printf("Enter roll number of student %d: ", i + 1); 
+scanf("%d", &rollNumbers[i]); } 
+printf("Roll numbers stored successfully.\n"); 
+} else if (choice == 2) { 
+if (count == 0) { 
+printf("No roll numbers entered yet.\n"); 
+} else { 
+int key; 
+printf("Enter roll number to search: "); 
+scanf("%d", &key); 
+if (linearSearch(rollNumbers, count, key)) 
+printf("Student with roll number %d attended the 
+training.\n", key); 
+else 
+printf("Student with roll number %d did NOT 
+attend the training.\n", key); 
+} 
+} else if (choice == 3) { 
+if (count == 0) { 
+printf("No roll numbers entered yet.\n"); 
+} else { 
+printf("Roll numbers of students who attended the 
+training:\n"); 
+for (int i = 0; i < count; i++) { 
+printf("%d ", rollNumbers[i]); 
+} 
+printf("\n"); 
+} 
+} else if (choice == 4) { 
+printf("Exiting program.\n"); 
+break; 
+} else { 
+printf("Invalid choice! Try again.\n"); 
+} 
+} return 0; }
